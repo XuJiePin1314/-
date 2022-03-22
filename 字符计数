@@ -1,0 +1,31 @@
+#include<stdio.h>
+int main()
+{
+	char a[20], b[5], * pt1, * pt2;
+	int i = 0, j;
+	pt1 = a;
+	pt2 = b;
+	printf("输入字符串a：\n");
+	gets(a);
+	printf("输入字符串b：\n");
+	gets(b);
+	while (*pt1)
+	{
+		j = 0;
+
+		while (*(pt1 + j) == *(pt2 + j))
+		{
+			j++;
+			if (*(pt2 + j) == '\0')
+			{
+				i++;
+				break;
+			}
+		}
+		pt1++;
+
+
+	}
+	printf("字符串b在字符串a出现的次数：%d\n", i);
+	return 0;
+}
