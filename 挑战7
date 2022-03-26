@@ -1,0 +1,52 @@
+#include<stdio.h>
+int a[50],b[50],c[50],d;
+int main()
+{
+	int i,p,curx,cury,j;
+	scanf("%d",&curx);
+	for( i=0;i<curx;i++)
+	{
+		scanf("%d %d %d",&a[i],&b[i],&c[i]);
+	}
+	scanf("%d",&cury);
+	for(p=0;p<cury;p++)
+	{
+		scanf("%d",&d);
+		for(j=0;j<curx;j++)
+			if(b[j]==d)
+				printf("%ld %d\n",a[j],c[j]);
+	}
+	return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
