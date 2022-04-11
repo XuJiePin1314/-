@@ -1,0 +1,69 @@
+#include<stdio.h>
+#include<stdlib.h>
+char * getOperand(char *p,double *pnum)
+{
+	char buffer[20]="0";
+	int i=0;
+	while(*p>='0'&&*p<='9'||*p=='.')
+	{
+		buffer[i++]=*p++;
+	}
+	*pnum=atof(buffer);
+	return p;
+}
+int main()
+{
+	char exp[200]="1-2.5*4+10.2/5.1",op[20]={0};
+	char *p=exp;
+	double num[20],temp,result;
+	int j=0,k=0;
+	while(*p!='\0')
+	{
+		if(*p>='0'&&*p<='9')
+		{
+			p=getOperand(p,&temp);
+			num[j++]=temp;
+		}
+		if(*p=='+'||*p=='-')
+		{
+			op[k++]=*p;
+		}
+		else if(*p=='*')
+		{
+			p++;
+			p=getOperand(p,&temp);
+			num[j-1]*=temp;
+			continue;
+		}
+		else if(*p=='/')
+		{
+			p++;
+			p=getOperand(p,&temp);
+			num[j-1]/=temp;
+			continue;
+		}
+		p++;
+	}
+	result=num[0];
+	for(k=0;op[k]!='\0';k++)
+	{
+		switch(op[k])
+		{
+		case '+':
+			result+=num[k+1];
+			break;
+		case '-':
+			result-=num[k+1];
+		}
+	}
+	printf("%.2lf\n",result);
+	return 0;
+}
+
+
+
+
+
+
+
+
